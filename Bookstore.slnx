@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/keycloak/">
+    <File Path="../../../Downloads/realm-export.json" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".dockerignore" />
+    <File Path="docker-compose.yml" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/tools/">
+    <File Path="get-crud-token.ps1" />
+  </Folder>
+  <Project Path="Bookstore.Api/Bookstore.Api.csproj" />
+  <Project Path="Bookstore.Application/Bookstore.Application.csproj" />
+  <Project Path="Bookstore.Domain/Bookstore.Domain.csproj" />
+  <Project Path="Bookstore.Infrastructure/Bookstore.Infrastructure.csproj" />
+  <Project Path="Bookstore.TestClient/Bookstore.TestClient.csproj" Id="afd8fdb6-cf21-4b85-a750-19b85f206946" />
+  <Project Path="Bookstore.Tests/Bookstore.Tests.csproj" />
+</Solution>

@@ -1,0 +1,38 @@
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4.5
+    command: start-dev --import-realm --hostname=http://localhost:8080
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./keycloak/bookstore-realm.json:/opt/keycloak/data/import/bookstore-realm.json:ro
+      - keycloak_data:/opt/keycloak/data
+    restart: unless-stopped
+
+  bookstore-api:
+    build:
+      context: .
+      dockerfile: Bookstore.Api/Dockerfile
+    depends_on:
+      - keycloak
+    ports:
+      - "127.0.0.1:8081:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__BookstoreDatabase: "Data Source=/app/data/bookstore.db"
+      Keycloak__Authority: "http://localhost:8080/realms/bookstore"
+      Keycloak__Audience: "bookstore-api"
+      Keycloak__MetadataAddress: "http://keycloak:8080/realms/bookstore/.well-known/openid-configuration"
+      Keycloak__InternalBaseUrl: "http://keycloak:8080"
+    volumes:
+      - bookstore_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  bookstore_data:
+  keycloak_data:

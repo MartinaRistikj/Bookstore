@@ -1,0 +1,66 @@
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# .NET build outputs
+**/bin/
+**/obj/
+**/TestResults/
+*.trx
+coverage/
+**/coverage/
+coverage.cobertura.xml
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+packages/
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+**/secrets.json
+**/secrets.dev.yaml
+**/appsettings.Local.json
+**/appsettings.Development.local.json
+
+# Keycloak private exports and backups
+*realm-private*.json
+realm-export.json
+keycloak/*-private.json
+keycloak/*-backup*.json
+keycloak-data-backup/
+**/keycloak-data-backup/
+keycloak-h2-backup/
+**/keycloak-h2-backup/
+
+# Temporary files and logs
+*.tmp
+*.bak
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Node.js (if needed later)
+node_modules/
+npm-debug.log
+
+# Unused Visual Studio starter project
+/Bookstore/
